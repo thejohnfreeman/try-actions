@@ -8,6 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-        echo github.ref=${{ github.ref }}
-        echo github.ref_name=${{ github.ref_name }}
-        echo github.ref_type=${{ github.ref_type }}
+        echo "GITHUB_REF=${GITHUB_REF}"
+        echo "GITHUB_REF_NAME=${GITHUB_REF_NAME}"
+        echo "GITHUB_REF_TYPE=${GITHUB_REF_TYPE}"
+        echo "github.ref=${{ github.ref }}"
+        echo "github.ref_name=${{ github.ref_name }}"
+        echo "github.ref_type=${{ github.ref_type }}"
