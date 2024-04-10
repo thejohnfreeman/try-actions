@@ -1,0 +1,13 @@
+name: tag
+on:
+  push:
+    tags: ['*']
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+        echo github.ref=${{ github.ref }}
+        echo github.ref_name=${{ github.ref_name }}
+        echo github.ref_type=${{ github.ref_type }}
