@@ -1,0 +1,15 @@
+name: manual
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Name of tag in XRPLF/rippled
+        required: true
+        type: string
+
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "tag=${{ inputs.tag }}"

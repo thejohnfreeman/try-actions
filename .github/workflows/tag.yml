@@ -4,10 +4,10 @@ on:
     tags: ['*']
 
 jobs:
-  echo:
+  job:
     runs-on: ubuntu-latest
     steps:
-      - name: variables
+      - name: echo variables
         run: |
           echo "GITHUB_REF=${GITHUB_REF}"
           echo "GITHUB_REF_NAME=${GITHUB_REF_NAME}"
@@ -15,3 +15,6 @@ jobs:
           echo "github.ref=${{ github.ref }}"
           echo "github.ref_name=${{ github.ref_name }}"
           echo "github.ref_type=${{ github.ref_type }}"
+      - name: trigger manual workflow
+        run: |
+          gh workflow run manual.yml -f tag=${GITHUB_REF_NAME}
