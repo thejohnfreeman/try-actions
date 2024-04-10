@@ -16,5 +16,7 @@ jobs:
           echo "github.ref_name=${{ github.ref_name }}"
           echo "github.ref_type=${{ github.ref_type }}"
       - name: trigger manual workflow
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           gh workflow run manual.yml -f tag=${GITHUB_REF_NAME}
