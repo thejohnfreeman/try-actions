@@ -5,6 +5,19 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  cmake:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check CMake before
+        run: |
+          cmake --version || true
+      - name: install CMake
+        uses: jwlawson/actions-setup-cmake@v2
+        with:
+          cmake-version: '3.20.x'
+      - name: check CMake after
+        run: |
+          cmake --version || true
   test:
     runs-on: ubuntu-latest
     steps:
