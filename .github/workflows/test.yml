@@ -15,6 +15,7 @@ jobs:
     runs-on: ${{ matrix.platform }}-latest
     steps:
       - name: install GCC on macOS
+        if: startsWith(matrix.platform, 'macos')
         run: |
           brew install gcc@13
           type gcc-13
