@@ -5,6 +5,30 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  environment:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - ubuntu
+          - macos
+    runs-on: ${{ matrix.platform }}-latest
+    steps:
+      - name: GCC
+        run: |
+          type gcc
+          gcc --version
+          type g++
+          g++ --version
+          ls /usr/bin/gcc*
+      - name: Clang
+        run: |
+          type clang
+          clang --version
+          type clang++
+          clang++ --version
+          ls /usr/bin/clang*
+
   cmake:
     runs-on: ubuntu-latest
     steps:
@@ -18,6 +42,7 @@ jobs:
       - name: check CMake after
         run: |
           cmake --version || true
+
   test:
     runs-on: ubuntu-latest
     steps:
